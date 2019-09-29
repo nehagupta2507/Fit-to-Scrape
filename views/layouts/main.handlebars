@@ -8,83 +8,39 @@
 		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
 		integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-	<link rel="stylesheet" href="style.css" type="text/css" />
+	<link rel="stylesheet" href="style.css" type="text/css"/>
 	<link href="https://fonts.googleapis.com/css?family=Beth+Ellen|Bree+Serif|Indie+Flower|Teko&display=swap"
 		rel="stylesheet">
 	<title>The NEWS Scrapper</title>
 </head>
 
 <body>
-
-	<nav class="navbar navbar-light bg-dark">
-		<span class="navbar-brand mb-0 h1">Web Scrapper</span>
-
-
-		{{!-- SCRAPE BUTTON 4 START --}}
-		<form action="/delete-scrapes">
-			<button type="submit" class="btn btn-danger">Delete Scrapes <i class="fas fa-bug"></i> <span id='article_count' class="badge badge-light"> 0</span> </button>
-			<button type="button" class="btn btn-primary">
-				Total Notes <span id='notes_count' class="badge badge-light">0</span>
-			</button>
-		</form>
-		{{!-- SCRAPE BUTTON 4 END --}}
-	</nav>
-
+    <nav class="navbar navbar-dark bg-dark">
+        <img src="images/news.jpg" width="1300" height="100" alt="World News Icon">
+    </nav>
 	<br>
-
-	<div class="jumbotron jumbotron-fluid">
-		<h1 id="main-text">Choose Your Scrape</h3>
-			<br>
-			<div class="container">
-				<div class="row">
-					<div class="col-3">
-						{{!-- SCRAPE BUTTON 1 START --}}
-						<form action="/scrape-2">
-							<button data-toggle="modal" data-target="#modalLoading" type="submit" class="btn btn-warning">News Articles <i
-									class="fas fa-rss-square"></i></button>
-						</form>
-						{{!-- SCRAPE BUTTON 1 END --}}
-					</div>
-					<div class="col-3">
-						{{!-- SCRAPE BUTTON 2 START --}}
-						<form action="/scrape-1">
-							<button data-toggle="modal" data-target="#modalLoading" type="submit" class="btn btn-success">Stock Articles <i
-									class='fas fa-money-bill-wave'></i></button>
-						</form>
-						{{!-- SCRAPE BUTTON 2 END --}}
-					</div>
-					<div class="col-3">
-						{{!-- SCRAPE BUTTON 3 START --}}
-						<form action="/scrape-3">
-							<button data-toggle="modal" data-target="#modalLoading" type="submit" class="btn btn-reddit">Reddit <i class='fab fa-reddit-square'></i>
-							</button>
-						</form>
-						{{!-- SCRAPE BUTTON 3 END --}}
-					</div>
-					<div class="col-3">
-						{{!-- SCRAPE BUTTON 3 START --}}
-						<form action="/scrape-4">
-							<button data-toggle="modal" data-target="#modalLoading" type="submit" class="btn btn-primary">Twitter <i class='fab fa-twitter-square'></i>
-							</button>
-						</form>
-						{{!-- SCRAPE BUTTON 3 END --}}
-					</div>
-				</div>
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-4">
+				<form action="/scrape">
+                    <a class="btn btn-info btn-lg" href="/scrape" role="button">Latest News</a>
+				</form>
 			</div>
-	</div>
-
-	<div class="jumbotron">
-		<p class="instructions"> Welcome To Info Scrapper! Choose from 4 buttons a topic to scrape , click the arrow <i class='fas fa-arrow-circle-right'></i> to to a link ,click the Pencil to add some notes <i class='fas fa-pencil-alt'></i> ,See the note count on the "notecount button" , if you want to delete your notes , just click the red "delete scrapes" button</p>
-		{{{ body }}}
-	</div>
-
-
-	<footer class="card-footer">
-		<div class="container">
-			<span class="grey-text text-lighten-4">nehagupta2507</span>
+			<div class="col-4">
+				<form action="/scrape2">
+                    <a class="btn btn-info btn-lg" href="/scrape2" role="button">Tech News</a>
+				</form>
+			</div>
+			<div class="col-4">
+				<form action="/scrape3">
+                    <a class="btn btn-info btn-lg" href="/scrape3" role="button">Trending Now</a>
+				</form>
+			</div>
 		</div>
-		</div>
-	</footer>
+	</div>
+	{{{ body }}}
+    <nav class="navbar navbar-dark bg-dark">
+		<span class="text-center">nehagupta2507</span>
+    </nav>
 </body>
-
 </html>

@@ -33,7 +33,6 @@ app.set("view engine", "handlebars");
 mongoose.connect("mongodb://localhost/HeadlinesGenerator", { useNewUrlParser: true });
 
 // Routes
-
 app.get('/', function(req, res) {
     res.render('index');
 });
