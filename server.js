@@ -1,20 +1,20 @@
-var express = require("express");
-var logger = require("morgan");
-var mongoose = require("mongoose");
+const express = require("express");
+const logger = require("morgan");
+const mongoose = require("mongoose");
 
 // Our scraping tools
 // Axios is a promised-based http library, similar to jQuery's Ajax method
 // It works on the client and on the server
-var axios = require("axios");
-var cheerio = require("cheerio");
+const axios = require("axios");
+const cheerio = require("cheerio");
 
 // Require all models
-var db = require("./models");
+const db = require("./models");
 
-var PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Initialize Express
-var app = express();
+const app = express();
 
 // Configure middleware
 
@@ -25,9 +25,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Make public a static folder
 app.use(express.static("public"));
+const exphbs = require('express-handlebars');
+app.engine("handlebars", exphbs({ defaultLayout: "main"}));
+app.set("view engine", "handlebars");
 
 // Connect to the Mongo DB
-mongoose.connect("mongodb://localhost/unit18Populater", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost/HeadlinesGenerator", { useNewUrlParser: true });
 
 // Routes
 
@@ -44,12 +47,8 @@ app.get("/scrape", function(req, res) {
       var result = {};
 
       // Add the text and href of every link, and save them as properties of the result object
-      result.title = $(this)
-        .children("a")
-        .text();
-      result.link = $(this)
-        .children("a")
-        .attr("href");
+      result.title = $(this).children("a").text();
+      result.link = $(this).children("a").attr("href");
 
       // Create a new Article using the `result` object built from scraping
       db.Article.create(result)
@@ -62,10 +61,12 @@ app.get("/scrape", function(req, res) {
           console.log(err);
         });
     });
-
-    // Send a message to the client
-    res.send("Scrape Complete");
+    res.render("index");
   });
+});
+
+app.get('/', function(req, res) {
+    res.render('index');
 });
 
 // Route for getting all Articles from the db
