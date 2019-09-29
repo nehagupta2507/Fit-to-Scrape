@@ -1,9 +1,10 @@
+//let clicked = false;
 // Grab the articles as a json
 $.getJSON("/articles", function(data) {
     // For each one
     for (var i = 0; i < data.length; i++) {
       // Display the apropos information on the page
-      $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + data[i].link + "</p>");
+      $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].title + "<br />" + "<a href=" + data[i].link +  " target='_blank'> Find out More" + "</a>" + "</p>");
     }
   });
   
@@ -31,16 +32,16 @@ $.getJSON("/articles", function(data) {
         $("#notes").append("<textarea id='bodyinput' name='body'></textarea>");
         // A button to submit a new note, with the id of the article saved to it
         $("#notes").append("<button data-id='" + data._id + "' id='savenote'>Save Note</button>");
-  
+        $(".modal-footer").append("<button data-dismiss='modal' data-id='" + data._id + "' id='savenote' class='btn btn-dark'  > Save Note " + "</button>");
         // If there's a note in the article
-        if (data.note) {
+        if(data.note) {
           // Place the title of the note in the title input
           $("#titleinput").val(data.note.title);
           // Place the body of the note in the body textarea
           $("#bodyinput").val(data.note.body);
         }
       });
-  });
+    })
   
   // When you click the savenote button
   $(document).on("click", "#savenote", function() {
