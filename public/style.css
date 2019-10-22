@@ -11,8 +11,8 @@ body{
   #articles {
     display: inline-block;
     overflow: auto;
-    width: 90%;
-    height: 900px;
+    width: 60%;
+    height: 700px;
   }
   #notes {
     float: right;
